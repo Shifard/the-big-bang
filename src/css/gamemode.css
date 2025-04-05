@@ -1,6 +1,7 @@
 main {
   display: flex;
   flex: 1;
+  flex-direction: column;
   width: 100%;
   align-items: center;
   justify-content: center;
@@ -26,16 +27,16 @@ main {
   gap: 16px;
   justify-content: center;
   align-items: center;
-}
 
-button {
-  height: 95px;
-  width: 250px;
-  color: var(--bg);
-  border: 2px solid black;
-  border-radius: 10px;
-  font-family: "Press Start 2P";
-  transition: all 0.3s;
+  button {
+    height: 95px;
+    width: 250px;
+    color: var(--bg);
+    border: 2px solid black;
+    border-radius: 10px;
+    font-family: "Press Start 2P";
+    transition: all 0.3s;
+  }
 }
 
 button:hover {
@@ -67,6 +68,11 @@ button.hard {
   }
 }
 
+.quizContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 
 .question-row {
   display: flex !important;

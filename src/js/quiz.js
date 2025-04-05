@@ -186,18 +186,18 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   medium.addEventListener("click", () => {
-    difficulty = 1; // Second array is medium questions
+    difficulty = 1;
     startQuiz();
   });
 
   hard.addEventListener("click", () => {
-    difficulty = 2; // Third array is hard questions
+    difficulty = 2; 
     startQuiz();
   });
 
   function startQuiz() {
     choose.style.display = "none";
-    quizContainer.style.display = "block";
+    //quizContainer.style.cssText = "display: flex !important;";
     currentQuestion = 0;
     score = 0;
     displayQuestion();
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function checkAnswer(selectedAnswer, selectedBtn) {
-    const current = questions[difficulty][currentQuestion]; // Fixed to use the correct difficulty
+    const current = questions[difficulty][currentQuestion]; 
     btnEnable = false;
 
     if (selectedAnswer === current.correctAnswer) {

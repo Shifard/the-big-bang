@@ -194,8 +194,7 @@ const questions = [
       if (currentQuestion < questions.length) {
         displayQuestion();
       } else {
-        //statusElement.textContent = `Quiz completed! Your score: ${score} / ${questions.length}`;
-        document.getElementById("choices").innerHTML = "";
+        window.location.href = "result.html"
       }
     }, 750);
   }
