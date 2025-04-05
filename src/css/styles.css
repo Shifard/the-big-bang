@@ -1,0 +1,69 @@
+:root {
+  --bg: #010114;
+  --bg-accent: #fbf2da;
+  --bg-accent-hover: #d9d0b8;
+  --fg: #ffffff;
+  --fg-accent: #2a2823;
+  --green: #d3fc88;
+  --red: #fe5b77;
+  --yellow: #eec23f;
+  --gray: #e0ddd6;
+  --gray-dim: #aeabab;
+}
+
+* {
+  font-family: "DM Sans", sans-serif;
+  font-size: 32px;
+  color: var(--fg);
+}
+
+body {
+  background-image: url(../assets/image_bg.png);
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.row {
+  flex-direction: row;
+}
+
+button.start:hover {
+  cursor: pointer;
+}
+
+main,
+header {
+  padding: 32px;
+}
+
+footer {
+  display: flex !important;
+  align-items: center;
+  height: 80px;
+  padding-left: 14px;
+  border-top: 1px solid rgba(161, 121, 26, 0.8);
+}
+
+@media (max-width: 768px) {
+  main,
+  header {
+    padding: 16px;
+  }
+
+  footer h2 {
+    font-size: 20px;
+  }
+}

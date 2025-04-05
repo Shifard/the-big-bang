@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="src/assets/favicon.ico" />
+    <title>Quiz</title>
+
+    <!-- Styles -->
+    <link href="src/css/reset.css" rel="stylesheet" />
+    <link href="src/css/index.css" rel="stylesheet" />
+    <link href="src/css/styles.css" rel="stylesheet" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Press+Start+2P&display:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Main Section -->
+    <main>
+      <div class="container col">
+        <div class="hero">
+          <picture class="logo">
+            <source
+              srcset="src/assets/the_big_bang_logo_mobile.png"
+              media="(max-width: 768px)"
+            />
+            <img
+              src="src/assets/the_big_bang_logo_desktop.png"
+              alt="The Big Bang Logo"
+            />
+          </picture>
+        </div>
+        <div class="start-btn">
+          <button class="start">Start</button>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer>
+      <h2>Group 2</h2>
+    </footer>
+  </body>
+  <script>
+    const gameMode = document.querySelector(".start");
+
+    gameMode.addEventListener("click", () => {
+      window.location.href = "gamemode.html";
+    });
+  </script>
+</html>

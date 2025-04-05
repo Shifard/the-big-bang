@@ -1,0 +1,87 @@
+body {
+  justify-content: unset;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+button {
+  height: 95px;
+  width: 250px;
+  color: var(--bg);
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: "Press Start 2P";
+  transition: all 0.3s;
+}
+
+h1 {
+  position: relative;
+  top: 10px;
+}
+button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+button.retry {
+  background: #fbe7ab;
+}
+
+button.home {
+  background: #f3cd5c;
+}
+
+button.answers {
+  background: #f6c73a;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-panel {
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.title {
+  font-family: "Press Start 2P";
+  font-weight: 400;
+  font-size: 90px;
+  color: #eec23f;
+  -webkit-text-stroke: 1px #e0ddd6;
+  text-align: center;
+}
+.mode-buttons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.planet-green {
+  position: absolute;
+  width: 500px;
+  left: -250px;
+}
+
+.planet-pink {
+  position: absolute;
+  bottom: 100px;
+  right: -850px;
+}
+
+.planet {
+  height: 2px;
+}

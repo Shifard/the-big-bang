@@ -1,0 +1,50 @@
+main {
+  flex: 1;
+  align-content: center;
+}
+
+button.start {
+  background-color: var(--gray);
+  border-radius: 8px;
+  box-shadow: none;
+  color: var(--bg);
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 32px;
+  outline: none;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border: 3px solid var(--gray);
+  transition: all 0.3s;
+}
+
+button.start:hover {
+  background-color: var(--bg);
+  color: var(--gray) !important;
+  border-color: var(--gray) !important;
+}
+
+footer {
+  margin-top: 64px;
+}
+
+footer h2 {
+  color: var(--gray);
+}
+
+div.hero {
+  max-width: 1200px;
+}
+
+@media (max-width: 768px) {
+  button.start {
+    font-size: 18px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
