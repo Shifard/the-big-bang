@@ -118,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function showHomeScreen() {
     hideScreens(header, difficultyScreen, quizScreen, resultsScreen);
+    setElementText(footerTitle, "Group 2");
     showScreens(homeScreen);
   }
 
