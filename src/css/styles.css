@@ -7,6 +7,9 @@
   --green: #d3fc88;
   --red: #fe5b77;
   --yellow: #eec23f;
+  --yellow-variation-0: #fbe7ab;
+  --yellow-variation-1: #f3cd5c;
+  --yellow-variation-2: #f6c73a;
   --gray: #e0ddd6;
   --gray-dim: #aeabab;
 }
@@ -26,6 +29,29 @@ body {
   justify-content: space-between;
 }
 
+main {
+  flex: 1;
+  align-content: center;
+}
+
+.screen-title {
+  flex: 1;
+  font-family: "Press Start 2P", sans-serif;
+  font-size: 90px;
+  color: var(--yellow);
+  -webkit-text-stroke: 1px var(--gray);
+  text-align: center;
+}
+
+.mode-buttons {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -40,19 +66,45 @@ body {
   flex-direction: row;
 }
 
-button.start:hover {
-  cursor: pointer;
-}
-
 main,
 header {
   padding: 32px;
 }
 
+button, a {
+  cursor: pointer;
+}
+
+button.panel-button {
+  height: 95px;
+  width: 250px;
+  color: var(--bg);
+  border: 2px solid black;
+  border-radius: 10px;
+  font-family: "Press Start 2P", sans-serif;
+  transition: all 0.3s;
+}
+
+button.panel-button:hover {
+  opacity: 0.8;
+}
+
+button.yellow-var-0 {
+  background-color: var(--yellow-variation-0);
+}
+
+button.yellow-var-1 {
+  background-color: var(--yellow-variation-1);
+}
+
+button.yellow-var-2 {
+  background-color: var(--yellow-variation-2);
+}
+
 footer {
   align-items: center;
   color: var(--gray);
-  display: flex !important;
+  display: flex;
   height: 80px;
   padding-left: 16px;
   padding-right: 16px;
@@ -66,6 +118,10 @@ footer h2 {
 
 @media (max-width: 768px) {
 
+  div.screen-title {
+    font-size: 32px;
+  }
+
   main,
   header {
     padding: 16px;
@@ -74,5 +130,11 @@ footer h2 {
   footer h2 {
     font-size: 20px;
     color: var(--gray);
+  }
+
+  button.panel-button {
+    font-size: 18px;
+    height: 60px;
+    width: 200px;
   }
 }

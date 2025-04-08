@@ -1,0 +1,23 @@
+div.results-screen {
+  display: none;
+}
+
+div.results-buttons {
+  flex-direction: column;
+}
+
+.planet-green {
+  position: absolute;
+  width: 500px;
+  left: -250px;
+}
+
+.planet-pink {
+  position: absolute;
+  bottom: 100px;
+  right: -850px;
+}
+
+.planet {
+  height: 2px;
+}

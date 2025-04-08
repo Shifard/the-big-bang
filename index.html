@@ -1,51 +1,82 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="src/assets/favicon.ico" />
-  <title>Quiz</title>
+  <title>The Big Bang</title>
 
   <!-- Styles -->
   <link href="src/css/reset.css" rel="stylesheet" />
-  <link href="src/css/index.css" rel="stylesheet" />
   <link href="src/css/styles.css" rel="stylesheet" />
+  <link href="src/css/navbar.css" rel="stylesheet" />
+  <link href="src/css/home.css" rel="stylesheet" />
+  <link href="src/css/difficulty.css" rel="stylesheet" />
+  <link href="src/css/quiz.css" rel="stylesheet" />
+  <link href="src/css/results.css" rel="stylesheet" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Press+Start+2P&display:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000=swap"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Press+Start+2P&display=swap"
     rel="stylesheet" />
 </head>
 
 <body>
+  <header class="header">
+    <h1><a class="header-title">The Big Bang</a></h1>
+    <div class="navbar">
+      <a class="menu-toggle">&#9776;<a>
+          <nav class="nav-links">
+            <a class="nav-item home-nav-item">HOME</a>
+            <a class="nav-item mode-nav-item active">GAME MODE</a>
+          </nav>
+    </div>
+  </header>
   <!-- Main Section -->
   <main>
-    <div class="container col">
+    <div class="home-screen col">
       <div class="hero">
-        <picture class="logo">
+        <picture class="hero-logo">
           <source srcset="src/assets/the_big_bang_logo_mobile.png" media="(max-width: 768px)" />
           <img src="src/assets/the_big_bang_logo_desktop.png" alt="The Big Bang Logo" />
         </picture>
       </div>
-      <div class="start-btn">
-        <button class="start">Start</button>
+      <div class="start-panel">
+        <button class="start-button">Start</button>
+      </div>
+    </div>
+    <div class="difficulty-screen col">
+      <div class="difficulty-title screen-title">Choose<br />Difficulty</div>
+      <div class="mode-buttons">
+        <button class="panel-button yellow-var-0 easy-button">Easy</button>
+        <button class="panel-button yellow-var-1 medium-button">Medium</button>
+        <button class="panel-button yellow-var-2 hard-button">Hard</button>
+      </div>
+    </div>
+    <div class="quiz-screen col">
+      <div class="question-row" id="question"></div>
+      <div class="choices-row" id="choices"></div>
+    </div>
+    <div class="results-screen col">
+      <div class="results-title screen-title">HOW'S THE<br />TRIP?</div>
+      <div class="results-buttons mode-buttons">
+        <a><button class="panel-button yellow-var-0 retry-button">Retry</button></a>
+        <a><button class="panel-button yellow-var-1 home-button">Home</button></a>
+        <a><button class="panel-button yellow-var-2 answers-button">Answers</button></a>
       </div>
     </div>
   </main>
   <!-- Footer -->
-  <footer>
+  <footer class="footer">
     <h2 class="footer-title">Group 2</h2>
   </footer>
-</body>
-<script>
-  const gameMode = document.querySelector(".start");
 
-  gameMode.addEventListener("click", () => {
-    window.location.href = "quiz.html";
-  });
-</script>
+  <!-- Scripts -->
+  <script src="src/js/navbar.js"></script>
+  <script type="module" src="src/js/script.js"></script>
+</body>
 
 </html>

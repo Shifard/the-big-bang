@@ -1,9 +1,9 @@
-main {
-  flex: 1;
-  align-content: center;
+div.start-panel {
+  display: flex;
+  justify-content: center;
 }
 
-button.start {
+button.start-button {
   background-color: var(--gray);
   border-radius: 8px;
   box-shadow: none;
@@ -21,26 +21,14 @@ button.start {
   transition: all 0.3s;
 }
 
-button.start:hover {
+button.start-button:hover {
   background-color: var(--bg);
   color: var(--gray) !important;
   border-color: var(--gray) !important;
 }
 
-footer {
-  margin-top: 64px;
-}
-
-footer h2 {
-  font-size: 32px;
-}
-
-div.hero {
-  max-width: 1200px;
-}
-
 @media (max-width: 768px) {
-  button.start {
+  button.start-button {
     font-size: 18px;
     padding-top: 4px;
     padding-bottom: 4px;

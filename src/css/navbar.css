@@ -1,5 +1,5 @@
 header {
-  display: flex;
+  display: none;
   justify-content: space-between;
   align-items: center;
   position: relative;
@@ -21,23 +21,25 @@ nav {
 }
 
 nav a {
-  color: var(--gray);
-  cursor: pointer;
+  color: var(--gray-dim);
   font-size: 20px;
   font-weight: 600;
   text-decoration: none;
 }
 
-nav a.inactive {
-  color: var(--gray-dim);
+nav a.active {
+  color: var(--gray);
 }
 
-.menu-toggle {
+nav a:hover {
+  color: var(--gray);
+}
+
+a.menu-toggle {
   display: none;
   font-size: 28px;
   background: none;
   border: none;
-  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -45,7 +47,7 @@ nav a.inactive {
     font-size: 20px;
   }
 
-  .nav-links {
+  nav.nav-links {
     display: none;
     flex-direction: column;
     background-color: var(--bg);
@@ -58,7 +60,7 @@ nav a.inactive {
     border-radius: 8px;
   }
 
-  .nav-links.show {
+  nav.nav-links.show {
     display: flex;
     flex-direction: column;
 
@@ -71,7 +73,7 @@ nav a.inactive {
     }
   }
 
-  .menu-toggle {
+  a.menu-toggle {
     display: block;
   }
 }

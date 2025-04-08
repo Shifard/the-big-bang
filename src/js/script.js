@@ -3,19 +3,28 @@ import { choicePrefixes } from "./questions.js";
 
 document.addEventListener("DOMContentLoaded", function() {
   // Screens
+  const header = document.querySelector(".header");
+  const homeScreen = document.querySelector(".home-screen");
   const difficultyScreen = document.querySelector(".difficulty-screen");
   const quizScreen = document.querySelector(".quiz-screen");
   const resultsScreen = document.querySelector(".results-screen");
+  const footer = document.querySelector(".footer");
 
   // Buttons
+  const startButton = document.querySelector(".start-button");
   const easyButton = document.querySelector(".easy-button");
   const mediumButton = document.querySelector(".medium-button");
   const hardButton = document.querySelector(".hard-button");
+  const retryButton = document.querySelector(".retry-button");
+  const homeButton = document.querySelector(".home-button");
+  const answersButton = document.querySelector(".answers-button");
 
   // Navigation and Elements
   const headerTitle = document.querySelector(".header-title");
-  const gamemodeNavItem = document.querySelector(".gamemode-nav");
+  const homeNavItem = document.querySelector(".home-nav-item");
+  const modeNavItem = document.querySelector(".mode-nav-item");
   const footerTitle = document.querySelector(".footer-title");
+  const scorePanel = document.querySelector(".score-panel");
 
   // Player variables
   let difficulty = 0;
@@ -24,7 +33,23 @@ document.addEventListener("DOMContentLoaded", function() {
   let btnEnable = true;
 
   // Hide elements on load
-  hideScreens(quizScreen, resultsScreen);
+  hideScreens(header, difficultyScreen, quizScreen, resultsScreen);
+
+  headerTitle.addEventListener("click", ()=> {
+    showHomeScreen();
+  });
+
+  homeNavItem.addEventListener("click", () => {
+    showHomeScreen();
+  });
+
+  modeNavItem.addEventListener("click", () => {
+    showDifficultyScreen();
+  });
+
+  startButton.addEventListener("click", () => {
+    showDifficultyScreen();
+  });
 
   easyButton.addEventListener("click", () => {
     difficulty = 0;
@@ -38,14 +63,23 @@ document.addEventListener("DOMContentLoaded", function() {
     showQuizScreen();
   });
 
+  retryButton.addEventListener("click", ()=> {
+    showDifficultyScreen();
+  });
+
+  homeButton.addEventListener("click", () => {
+    showHomeScreen();
+  });
+
+  answersButton.addEventListener("click", () => {
+    alert("TODO");
+    showHomeScreen();
+  });
+
   hardButton.addEventListener("click", () => {
     difficulty = 2;
     setElementText(headerTitle, "Hard");
     showQuizScreen();
-  });
-
-  gamemodeNavItem.addEventListener("click", () => {
-    showDifficultyScreen();
   });
 
   // Helper Functions
@@ -82,20 +116,35 @@ document.addEventListener("DOMContentLoaded", function() {
     score = 0;
   }
 
+  function showHomeScreen() {
+    hideScreens(header, difficultyScreen, quizScreen, resultsScreen);
+    showScreens(homeScreen);
+  }
+
   function showDifficultyScreen() {
-    showScreens(difficultyScreen);
-    hideScreens(quizScreen, resultsScreen);
+    hideScreens(homeScreen, quizScreen, resultsScreen);
+    modeNavItem.classList.add("active");
+    showScreens(header, difficultyScreen);
     setElementText(headerTitle, "The Big Bang");
     setElementText(footerTitle, "");
     resetQuiz();
   }
 
   function showQuizScreen() {
-    showScreens(quizScreen);
-    hideScreens(difficultyScreen, resultsScreen);
+    hideScreens(homeScreen, difficultyScreen, resultsScreen);
+    modeNavItem.classList.remove("active");
+    showScreens(header, quizScreen);
     currentQuestion = 0;
     score = 0;
     displayQuestion();
+  }
+
+  function showResultsScreen(score, totalQuestions) {
+    console.log(`${score} / ${totalQuestions}`);
+    setElementText(footerTitle, `Score: ${score} / ${totalQuestions}`);
+    hideScreens(homeScreen, quizScreen, difficultyScreen);
+    modeNavItem.classList.remove("active");
+    showScreens(header, resultsScreen);
   }
 
   function displayQuestion() {
@@ -132,14 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
       if (currentQuestion < questions[difficulty].length) {
         displayQuestion();
       } else {
-        const choicesElement = document.getElementById("choices");
-        const questionElement = document.getElementById("question");
-        setElementText(footerTitle, '');
-        setElementText(
-          questionElement,
-          `Quiz completed! Your score: ${score} / ${questions[difficulty].length}`,
-        );
-        choicesElement.innerHTML = "";
+        showResultsScreen(score, questions[difficulty].length);
       }
       btnEnable = true;
     }, 750);
