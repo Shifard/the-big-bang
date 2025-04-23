@@ -24,13 +24,19 @@ document.addEventListener("DOMContentLoaded", function() {
   const homeNavItem = document.querySelector(".home-nav-item");
   const modeNavItem = document.querySelector(".mode-nav-item");
   const footerTitle = document.querySelector(".footer-title");
-  const scorePanel = document.querySelector(".score-panel");
+
+  // Create a new container for answers review
+  const answersContainer = document.createElement("div");
+  answersContainer.className = "answers-container";
+  resultsScreen.appendChild(answersContainer);
 
   // Player variables
   let difficulty = 0;
   let currentQuestion = 0;
   let score = 0;
   let btnEnable = true;
+  let userAnswers = [];
+  let isShowingAnswers = false;
 
   // Hide elements on load
   hideScreens(header, difficultyScreen, quizScreen, resultsScreen);
@@ -72,8 +78,17 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   answersButton.addEventListener("click", () => {
-    alert("TODO");
-    showHomeScreen();
+    if (isShowingAnswers) {
+      answersContainer.style.display = "none";
+      document.querySelector(".results-buttons").style.display = "flex";
+      setElementText(answersButton, "Answers");
+      isShowingAnswers = false;
+    } else {
+      showAnswers();
+      document.querySelector(".results-buttons").style.display = "none";
+      setElementText(answersButton, "Back");
+      isShowingAnswers = true;
+    }
   });
 
   hardButton.addEventListener("click", () => {
@@ -114,6 +129,8 @@ document.addEventListener("DOMContentLoaded", function() {
     difficulty = -1;
     currentQuestion = 0;
     score = 0;
+    userAnswers = [];
+    isShowingAnswers = false;
   }
 
   function showHomeScreen() {
@@ -137,15 +154,72 @@ document.addEventListener("DOMContentLoaded", function() {
     showScreens(header, quizScreen);
     currentQuestion = 0;
     score = 0;
+    userAnswers = [];
     displayQuestion();
   }
 
   function showResultsScreen(score, totalQuestions) {
-    console.log(`${score} / ${totalQuestions}`);
+    answersContainer.innerHTML = "";
+    answersContainer.style.display = "none";
+    document.querySelector(".results-buttons").style.display = "flex";
+    
+    const resultsTitle = document.querySelector(".results-title");
+    setElementText(resultsTitle, `HOW'S THE\nTRIP?`);
     setElementText(footerTitle, `Score: ${score} / ${totalQuestions}`);
+    
+    setElementText(answersButton, "Answers");
+    isShowingAnswers = false;
+    
     hideScreens(homeScreen, quizScreen, difficultyScreen);
     modeNavItem.classList.remove("active");
-    showScreens(header, resultsScreen);
+    showScreens(header, resultsScreen, footer);
+  }
+
+  function showAnswers() {
+    answersContainer.innerHTML = "";
+    answersContainer.style.display = "flex";
+    
+    const heading = document.createElement("h2");
+    heading.className = "answers-heading";
+    heading.textContent = "Your Answers";
+    answersContainer.appendChild(heading);
+    
+    const questionsReview = document.createElement("div");
+    questionsReview.className = "questions-review";
+    
+    for (let i = 0; i < questions[difficulty].length; i++) {
+      const q = questions[difficulty][i];
+      const userAnswer = userAnswers[i] || "Not answered";
+      const isCorrect = userAnswer === q.correctAnswer;
+
+      const questionDiv = document.createElement("div");
+      questionDiv.className = "review-question";
+      
+      const questionText = document.createElement("h3");
+      questionText.textContent = `Q${i+1}: ${q.question}`;
+      questionDiv.appendChild(questionText);
+
+      const userAnswerDiv = document.createElement("div");
+      userAnswerDiv.className = `user-answer ${isCorrect ? 'correct' : 'incorrect'}`;
+      userAnswerDiv.textContent = `Your answer: ${userAnswer} ${isCorrect ? '✓' : '✗'}`;
+      questionDiv.appendChild(userAnswerDiv);
+
+      if (!isCorrect) {
+        const correctAnswer = document.createElement("div");
+        correctAnswer.className = "correct-answer";
+        correctAnswer.textContent = `Correct answer: ${q.correctAnswer}`;
+        questionDiv.appendChild(correctAnswer);
+      }
+
+      if (i < questions[difficulty].length - 1) {
+        const separator = document.createElement("hr");
+        questionDiv.appendChild(separator);
+      }
+      
+      questionsReview.appendChild(questionDiv);
+    }
+    
+    answersContainer.appendChild(questionsReview);
   }
 
   function displayQuestion() {
@@ -154,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const current = questions[difficulty][currentQuestion];
 
     setElementText(questionElement, current.question);
-    setElementText(footerTitle, `Question ${currentQuestion + 1}`);
+    setElementText(footerTitle, `Question ${currentQuestion + 1} of ${questions[difficulty].length}`);
     choicesElement.innerHTML = "";
 
     current.choices.forEach((choice, index) => {
@@ -167,14 +241,25 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function checkAnswer(selectedAnswer, selectedBtn) {
+    if (!btnEnable) return;
+    
     const current = questions[difficulty][currentQuestion];
     btnEnable = false;
+
+    userAnswers[currentQuestion] = selectedAnswer;
 
     if (selectedAnswer === current.correctAnswer) {
       selectedBtn.style.backgroundColor = "var(--green)";
       score++;
     } else {
       selectedBtn.style.backgroundColor = "var(--red)";
+      
+      const buttons = document.querySelectorAll(".choice-button");
+      buttons.forEach(btn => {
+        if (btn.textContent.includes(current.correctAnswer)) {
+          btn.style.backgroundColor = "var(--green)";
+        }
+      });
     }
 
     setTimeout(() => {
