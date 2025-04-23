@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", function() {
     userAnswers[currentQuestion] = selectedAnswer;
 
     if (selectedAnswer === current.correctAnswer) {
-      selectedBtn.style.backgroundColor = "var(--green)";
+      selectedBtn.style.backgroundColor = "var(--green-variation-0)";
       score++;
     } else {
       selectedBtn.style.backgroundColor = "var(--red)";
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const buttons = document.querySelectorAll(".choice-button");
       buttons.forEach(btn => {
         if (btn.textContent.includes(current.correctAnswer)) {
-          btn.style.backgroundColor = "var(--green)";
+          btn.style.backgroundColor = "var(--green-variation-0)";
         }
       });
     }
