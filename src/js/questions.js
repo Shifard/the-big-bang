@@ -40,7 +40,7 @@ export const questions = [
     {
       question:
         "Which planet is often called Earth's 'twin' due to its similar size and composition?",
-      choices: ["Mars", "Mercury", "Venus ", "Neptune"],
+      choices: ["Mars", "Mercury", "Venus", "Neptune"],
       correctAnswer: "Venus",
     },
     {
@@ -79,23 +79,12 @@ export const questions = [
       correctAnswer: "Hydrogen",
     },
     {
-      question:
-        "What is the name of the mysterious force that makes up about 27% of the universe's mass-energy content?",
-      choices: [
-        "Antimatter",
-        "Dark Matter",
-        "Cosmic Radiation",
-        "Supernova Remnants",
-      ],
-      correctAnswer: "Dark Matter",
-    },
-    {
       question: "What type of galaxy is the Milky Way?",
       choices: ["Elliptical", "Spiral", "Irregular", "Lenticular"],
       correctAnswer: "Spiral",
     },
     {
-      question: "What is the cosmic background radiation?",
+      question: "What is the cosmic microwave background radiation?",
       choices: [
         "Energy from black holes",
         "Leftover radiation from the Big Bang",
@@ -149,20 +138,9 @@ export const questions = [
     },
     {
       question:
-        "What is the name of the structure thought to form the largest cosmic 'web' of galaxies in the universe?",
-      choices: [
-        "Cosmic Threads",
-        "Large-Scale Structure",
-        "Galactic Mesh",
-        "Supercluster Network",
-      ],
-      correctAnswer: "Large-Scale Structure",
-    },
-    {
-      question:
-        "What is the mysterious form of energy that is accelerating the expansion of the universe?",
-      choices: ["Dark Energy", "Cosmic Rays", "Antimatter", "Quantum Force"],
-      correctAnswer: "Dark Energy",
+        "What is the name of the spacecraft that carried the first humans to the Moon?",
+      choices: ["Apollo 13", "Apollo 11", "Voyager 1", "Gemini 4"],
+      correctAnswer: "Apollo 11",
     },
   ],
 ];
