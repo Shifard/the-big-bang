@@ -178,6 +178,18 @@ document.addEventListener("DOMContentLoaded", function() {
   function showAnswers() {
     answersContainer.innerHTML = "";
     answersContainer.style.display = "flex";
+
+    const backBtn = document.createElement("button");
+    backBtn.className = "back-button";
+    backBtn.innerHTML = "&#8592;"; 
+    answersContainer.appendChild(backBtn); 
+  
+    backBtn.addEventListener("click", () => {
+      answersContainer.style.display = "none";
+      document.querySelector(".results-buttons").style.display = "flex";
+      setElementText(answersButton, "Answers");
+      isShowingAnswers = false;
+    });
     
     const heading = document.createElement("h2");
     heading.className = "answers-heading";
