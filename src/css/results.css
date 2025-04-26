@@ -39,7 +39,7 @@ div.results-buttons {
 .answers-heading {
   text-align: center;
   font-size: 1.8rem;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: var(--yellow);
   font-family: 'Press Start 2P', cursive;
   padding: 10px 0;
@@ -101,6 +101,20 @@ div.results-buttons {
   margin-top: 15px;
   border: none;
   border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--yellow);
+  border: 1px solid var(--yellow);
+  transition: all 0.2s;
+}
+
+.back-button:hover {
+  background-color: var(--yellow);
+  color: #000;
 }
 
 @media (max-width: 768px) {
